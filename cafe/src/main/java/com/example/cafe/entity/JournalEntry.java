@@ -1,8 +1,6 @@
 package com.example.cafe.entity;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,10 +12,13 @@ import java.util.Date;
 //@Getter
 //@Setter
 @Data
+@NoArgsConstructor
+// used for deseralization -> JSon to POJO
 public class JournalEntry {
 
     @Id
     private ObjectId id;
+    @NonNull
     private String title;
     private String content;
     private LocalDateTime date;
