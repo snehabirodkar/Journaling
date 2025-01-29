@@ -4,6 +4,8 @@ import com.example.cafe.Repository.JournalEntryRepository;
 import com.example.cafe.entity.JournalEntry;
 import com.example.cafe.entity.Users;
 import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +23,7 @@ public class JournalEntryService {
     @Autowired
     private UserDetailService userService;
 
+    Logger static final Logger logger = LoggerFactory.getLogger(JournalEntryService.class);
     @Transactional
     public void saveEntry(JournalEntry journalEntry, String userName){
        try{
@@ -32,6 +35,7 @@ public class JournalEntryService {
            userService.saveEntry(user);
        }catch(Exception e){
            System.out.println(e);
+            logger.info("this is logger");
            throw new RuntimeException("error", e);
        }
     }

@@ -22,7 +22,7 @@ public class Users {
     @NonNull
     private String password;
 
-//    private LocalDateTime date;
+    private List<String> roles;
 
     @DBRef
     private List<JournalEntry> journalEntries = new ArrayList<>();
